@@ -1,4 +1,4 @@
-package com.goos.sniper;
+package com.goos.sniper
 
 import org.junit.Assert._
 import org.junit.Test

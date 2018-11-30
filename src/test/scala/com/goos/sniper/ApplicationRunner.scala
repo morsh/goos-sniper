@@ -1,4 +1,4 @@
-package com.goos.sniper;
+package com.goos.sniper
 
 class ApplicationRunner {
 
@@ -7,13 +7,16 @@ class ApplicationRunner {
   val XMPP_HOSTNAME = "localhost"
   val SNIPER_XMPP_ID = SNIPER_ID + "@" + XMPP_HOSTNAME + "/Auction"
 
-  val driver: AuctionSniperDriver;
+  val STATUS_JOINING = "Joinning"
+  val STATUS_LOST = "Lost"
+
+  var driver: AuctionSniperDriver = null
 
   def startBiddingIn(auction: FakeAuctionServer) {
     val thread = new Thread("Test Application") {
       override def run() {
         try {
-          Main.main(XMPP_HOSTNAME, SNIPER_ID, SNIPER_PASSWORD, auction.getItemId());
+          new Main(XMPP_HOSTNAME, SNIPER_ID, SNIPER_PASSWORD, auction.getItemId());
         } catch {
           case e: Exception => e.printStackTrace();
         }
